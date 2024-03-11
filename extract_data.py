@@ -21,10 +21,20 @@ for t in tickers:
 # Concat all df to create a single df named stocks
 stocks = pd.concat(ticker_data, axis = 1, keys = tickers)
 
+# Set names for the multi index
+stocks.columns.names = ['Ticker Symbol', 'Stock Info']
+
 # Check if data dir exists, else create one
 file_dir = 'data'
 if not os.path.exists(file_dir):
     os.makedirs(file_dir)
 
-# Store the extracted data into a file with UTF-8 encoding and no indexing
-stocks.to_csv(file_dir + '/stock_data.csv', encoding = 'utf-8', index = False)
+# Store the extracted data into a csv file
+# Stock data contains 1 string row, all other rows are int or float
+# This 1 row causes all values to get extracted as string when reading csv
+# Causes issues in plotting, data conversion is not easy
+stocks.to_csv(file_dir + '/stock_data.csv', index = False)
+
+# Store the extracted data into a csv file
+# Easier to read json when df has multiple data types
+stocks.to_json(file_dir + '/stock_data.json')
