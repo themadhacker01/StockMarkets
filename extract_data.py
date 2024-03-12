@@ -11,7 +11,7 @@ start_date = '2018-01-01'
 end_date = datetime.now().strftime('%Y-%m-%d')
 
 # List the ticker symbols you are interested in
-tickers = ['SPY', 'AAL', 'ZM', 'NFLX', 'FB']
+tickers = ['SPY', 'AAL', 'ZM', 'NFLX']
 
 # Store each dataframe seperately for easy plotting
 ticker_data = {}
