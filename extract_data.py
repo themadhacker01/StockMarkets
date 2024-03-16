@@ -33,7 +33,7 @@ if not os.path.exists(file_dir):
 # Stock data contains 1 string row, all other rows are int or float
 # This 1 row causes all values to get extracted as string when reading csv
 # Causes issues in plotting, data conversion is not easy
-stocks.to_csv(file_dir + '/stock_data.csv', index = False)
+stocks.to_csv(file_dir + '/stock_data.csv')
 
 # Store the extracted data into a csv file
 # Easier to read json when df has multiple data types
